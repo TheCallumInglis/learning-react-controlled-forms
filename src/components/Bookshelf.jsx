@@ -2,18 +2,21 @@ import { useState } from 'react';
 
 const Bookshelf = () => {
     const [books, setBooks] = useState([
-        { title: 'Fourth Wing', author: 'Rebecca Yarros' },
-        { title: 'The Lion, the Witch and the Wardrobe', author: 'C.S. Lewis' },
+        // { title: 'Fourth Wing', author: 'Rebecca Yarros' },
+        // { title: 'The Lion, the Witch and the Wardrobe', author: 'C.S. Lewis' },
     ]);
 
     const [newBook, setNewBook] = useState({ title: '', author: '' });
 
     const handleInputChange = (e) => {
-        const book = {...newBook};
-        book.title = e.target.form.elements.title.value;
-        book.author = e.target.form.elements.author.value;
+        const {
+            target: { name, value }
+        } = e;
 
-        setNewBook(book);
+        setNewBook({ 
+            ...newBook, 
+            [name]: value 
+        });
     }
 
     const handleSubmit = (e) => {
@@ -43,12 +46,15 @@ const Bookshelf = () => {
                 </form>
             </div>
             <div className="bookCardsDiv">
-                {books.map((book, index) => (
-                    <div key={index} className="bookCard">
-                        <h3>{book.title}</h3>
-                        <p>{book.author}</p>
-                    </div>
-                ))}
+                {books.length > 0 ?
+                    books.map((book, index) => (
+                        <div key={index} className="bookCard">
+                            <h3>{book.title}</h3>
+                            <p>{book.author}</p>
+                        </div>
+                    ))
+                    : <p>No books to display</p>
+                }
             </div>
         </div>
     )
