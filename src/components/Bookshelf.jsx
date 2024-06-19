@@ -21,6 +21,12 @@ const Bookshelf = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!newBook.title || !newBook.author) {
+            alert('Please enter a title and author');
+            return;
+        }
+
         setBooks([...books, newBook]);
         setNewBook({ title: '', author: '' });
     }
