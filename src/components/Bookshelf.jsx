@@ -27,14 +27,14 @@ const Bookshelf = () => {
             <div className="formDiv">
                 <h3>Add a Book</h3>
                 <form onSubmit={handleSubmit}>
-                    <label>
+                    <label htmlFor='title'>
                         Title:
-                        <input type="text" value={newBook.title} name="title" onChange={handleInputChange} />
+                        <input type="text" value={newBook.title} id="title" name="title" onChange={handleInputChange} />
                     </label>
 
-                    <label>
+                    <label htmlFor='author'>
                         Author:
-                        <input type="text" value={newBook.author} name="author" onChange={handleInputChange} />
+                        <input type="text" value={newBook.author} id="author" name="author" onChange={handleInputChange} />
                     </label>
                     
                     <button type="submit">
