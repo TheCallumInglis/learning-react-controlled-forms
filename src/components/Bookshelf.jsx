@@ -26,7 +26,6 @@ const Bookshelf = () => {
         <div className="bookshelfDiv">
             <div className="formDiv">
                 <h3>Add a Book</h3>
-                {/* Form will go here */}
                 <form onSubmit={handleSubmit}>
                     <label>
                         Title:
@@ -43,7 +42,14 @@ const Bookshelf = () => {
                     </button>
                 </form>
             </div>
-            <div className="bookCardsDiv">{/* Book cards will display here */}</div>
+            <div className="bookCardsDiv">
+                {books.map((book, index) => (
+                    <div key={index} className="bookCard">
+                        <h3>{book.title}</h3>
+                        <p>{book.author}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
